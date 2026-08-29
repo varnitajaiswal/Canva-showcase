@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Varnita Jaiswal — Canva Design Showcase</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+  <style>
+    :root {
+      --bg-base: #0a0a0c;
+      --bg-surface: #121216;
+      --bg-surface-elevated: #1a1a22;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(255, 255, 255, 0.25);
+      --text-primary: #f4f4f6;
+      --text-secondary: #9090a2;
+      --text-muted: #5e5e70;
+      --accent: #6366f1;
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      --glass-bg: rgba(18, 18, 22, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.06);
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+      --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient Background Glow */
+    .ambient-glow {
+      position: fixed;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(168, 85, 247, 0.05) 50%, transparent 80%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Layout Containers */
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 20px;
+      z-index: 100;
+      margin-bottom: 40px;
+    }
+
+    .nav-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 28px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-full);
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.5px;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-primary);
+    }
+
+    .btn-admin {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+
+    .btn-admin:hover {
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 60px 0 40px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      border-radius: var(--radius-full);
+      font-size: 0.8rem;
+      color: #a5b4fc;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      line-height: 1.1;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Gallery Controls */
+    .controls-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .search-sort-bar {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .search-box input {
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 12px 16px 12px 42px;
+      border-radius: var(--radius-md);
+      color: var(--text-primary);
+      font-family: inherit;
+      font-size: 0.95rem;
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .search-box input:focus {
+      border-color: var(--border-focus);
+      background: var(--bg-surface-elevated);
+    }
+
+    .search-box i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 1rem;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+    .filter-tabs::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+
+    .tab-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--border-focus);
+    }
+
+    .tab-btn.active {
+      background: var(--text-primary);
+      color: var(--bg-base);
+      border-color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Masonry Gallery Grid */
+    .masonry-grid {
+      column-count: 3;
+      column-gap: 24px;
+    }
+
+    @media (max-width: 992px) {
+      .masonry-grid { column-count: 2; }
+    }
+    @media (max-width: 600px) {
+      .masonry-grid { column-count: 1; }
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 24px;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-focus);
+      box-shadow: 0 16px 32px rgba(0,0,0,0.4);
+    }
+
+    .item-media {
+      position: relative;
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    .item-media img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .gallery-item:hover .item-media img {
+      transform: scale(1.03);
+    }
+
+    .item-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10, 10, 12, 0.8) 0%, transparent 60%);
+      opacity: 0;
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+      transition: var(--transition);
+    }
+
+    .gallery-item:hover .item-overlay {
+      opacity: 1;
+    }
+
+    .item-info {
+      padding: 18px;
+    }
+
+    .item-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .item-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #a5b4fc;
+      font-weight: 600;
+    }
+
+    .item-date {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .item-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    /* Modal / Detail View */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 12, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.6);
+      position: relative;
+    }
+
+    @media (min-width: 768px) {
+      .modal-card {
+        flex-direction: row;
+      }
+    }
+
+    .modal-media-col {
+      flex: 1.3;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    .modal-media-col img {
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .modal-details-col {
+      flex: 1;
+      padding: 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      color: var(--text-primary);
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .btn-canva {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--accent-gradient);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 14px 24px;
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+      margin-top: 24px;
+    }
+
+    .btn-canva:hover {
+      opacity: 0.92;
+      transform: translateY(-2px);
+    }
+
+    /* Admin Panel Drawer (Client side for fast updates) */
+    .admin-panel {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-surface-elevated);
+      border-top: 1px solid var(--border-focus);
+      padding: 24px;
+      z-index: 999;
+      transform: translateY(100%);
+      transition: var(--transition);
+      box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+    }
+
+    .admin-panel.open {
+      transform: translateY(0);
+    }
+
+    .admin-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .admin-grid input, .admin-grid select, .admin-grid textarea {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-family: inherit;
+    }
+
+    .admin-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    /* Footer & Profile Section */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 80px;
+      padding: 60px 0 40px;
+    }
+
+    .about-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    @media (min-width: 768px) {
+      .about-card { grid-template-columns: 1.5fr 1fr; }
+    }
+
+    .social-links {
+      display: flex;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      border: 1px solid var(--border-subtle);
+      padding: 8px 16px;
+      border-radius: var(--radius-full);
+      transition: var(--transition);
+    }
+
+    .social-btn:hover {
+      color: var(--text-primary);
+      border-color: var(--border-focus);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <div class="container">
+    <header>
+      <nav class="nav-bar">
+        <a href="#" class="brand">Varnita's Gallery</a>
+        <div class="nav-links">
+          <a href="#gallery" class="nav-link active">Designs</a>
+          <a href="#about" class="nav-link">About</a>
+          
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-badge"><i class="ph ph-sparkle"></i> Curated Canva Portfolio</div>
+      <h1>Visual storytelling through intentional design.</h1>
+      <p>A central, living archive of social media systems, brand kits, posters, and presentation decks.</p>
+    </section>
+
+    <section class="controls-panel" id="gallery">
+      <div class="search-sort-bar">
+        <div class="search-box">
+          <i class="ph ph-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Search by title, tool, or description...">
+        </div>
+        <div class="filter-tabs" id="categoryFilter">
+          <button class="tab-btn active" data-category="All">All Projects</button>
+          <button class="tab-btn" data-category="Posters">Posters</button>
+          <button class="tab-btn" data-category="Presentations">Presentations</button>
+          <button class="tab-btn" data-category="Branding">Branding</button>
+          <button class="tab-btn" data-category="Thumbnails">Thumbnails</button>
+          <button class="tab-btn" data-category="Invitations">Invitations</button>
+          <button class="tab-btn" data-category="Other">Other</button>
+        </div>
+      </div>
+    </section>
+
+    <main class="masonry-grid" id="designGrid">
+      </main>
+
+    <footer id="about">
+      <div class="about-card">
+        <div>
+          <h2 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 12px;">Varnita Jaiswal</h2>
+          <p style="color: var(--text-secondary); margin-bottom: 16px;">
+            Content Creator, Personal Brand Strategist, and Visual Designer focusing on technology, modern UI/UX aesthetics, and structured visual communication.
+          </p>
+          <div class="social-links">
+            <a href="https://github.com" target="_blank" class="social-btn"><i class="ph ph-github-logo"></i> GitHub</a>
+            <a href="www.linkedin.com/in/varnitajaiswal" target="_blank" class="social-btn"><i class="ph ph-palette"></i> LinkedIn </a>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size: 1rem; color: var(--text-muted); margin-bottom: 12px; text-transform: uppercase;">Core Disciplines</h3>
+          <ul style="list-style: none; color: var(--text-secondary); line-height: 1.8; font-size: 0.95rem;">
+            <li><i class="ph ph-check-circle" style="color: var(--accent);"></i> Brand Identity & Systems</li>
+            <li><i class="ph ph-check-circle" style="color: var(--accent);"></i> Visual Content & Growth Strategy</li>
+            <li><i class="ph ph-check-circle" style="color: var(--accent);"></i> Editorial Layouts & Storyboarding</li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div class="modal" id="detailModal">
+    <div class="modal-card">
+      <button class="modal-close" id="closeModalBtn"><i class="ph ph-x"></i></button>
+      <div class="modal-media-col">
+        <img id="modalImg" src="" alt="Preview">
+      </div>
+      <div class="modal-details-col">
+        <div>
+          <span class="item-category" id="modalCategory">Category</span>
+          <h2 class="item-title" id="modalTitle" style="font-size: 1.75rem; margin-top: 8px;">Project Title</h2>
+          <p id="modalDate" style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">Date</p>
+          <p id="modalDesc" style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;"></p>
+        </div>
+        <div>
+          <div style="margin-top: 20px;">
+            <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; font-weight: 600;">Tools / Format</span>
+            <p id="modalTools" style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 4px;">Canva Pro</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-panel" id="adminPanel">
+    <h3 style="margin-bottom: 8px; font-size: 1rem;">Direct JSON Generator (For GitHub updates)</h3>
+    <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 12px;">Fill this to get a new item code block to paste into your `index.html` file on GitHub.</p>
+    <div class="admin-grid">
+      <input type="text" id="newTitle" placeholder="Design Title">
+      <select id="newCategory">
+        <option value="Posters">Posters</option>
+        <option value="Presentations">Presentations</option>
+        <option value="Branding">Branding</option>
+        <option value="Thumbnails">Thumbnails</option>
+        <option value="Invitations">Invitations</option>
+        <option value="Other">Other</option>
+      </select>
+      <input type="text" id="newImage" placeholder="Image URL (e.g., https://... or ./assets/img.jpg)">
+      <input type="text" id="newLink" placeholder="Canva Edit Link">
+      <input type="text" id="newTools" placeholder="Tools (e.g., Canva, Figma)">
+      <textarea id="newDesc" placeholder="Description" rows="1"></textarea>
+    </div>
+    <div class="admin-actions">
+      <button class="tab-btn active" id="generateJsonBtn">Generate & Copy Code Block</button>
+      <button class="btn-admin" id="closeAdmin">Close Panel</button>
+    </div>
+  </div>
+
+  <script>
+   
+    const designsData = [
+      {
+        id: "1",
+        title: "Luxury Jewelry Promotional Poster",
+        category: "Posters",
+        date: "Aug 2026",
+        image: "Luxury Fashion Poster.png",
+        description: "An editorial-style promotional graphic showcasing diamond rings and bracelets against silver silk, paired with clean typography and promotional offer callouts.",
+        tools: "Canva Pro",
+
+      },
+      {
+        id: "2",
+        title: "Luxury Perfume Product Feature",
+        category: "Posters",
+        date: "Jul 2026",
+        image: "Perfume Product Poster.png",
+        description: "A sophisticated navy product showcase featuring an illuminated blue perfume bottle on reflective glass, accented by modern line art and elegant typography.",
+        tools: "Canva, Illustrator",
+      },
+      {
+        id: "3",
+        title: "Mind Mapping Workflow Infographic",
+        category: "Branding",
+        date: "Jun 2026",
+        image: "Mind Mapping Poster.png",
+        description: "A structured, pastel-plaid productivity graphic detailing a six-step planning roadmap: Vision, Goals, Actions, Timeline, Resources, and Review.",
+        tools: "Canva Pro",
+       
+      },
+      {
+        id: "4",
+        title: "Brand Deliverables Mind Map",
+        category: "Branding",
+        date: "May 2026",
+        image: "Brand mind map.webp",
+        description: "A strategic breakdown of end-to-end brand building services, organized into color-coded watercolor clusters covering strategy, visual identity, stationery, digital UI, and social media assets.",
+        tools: "Canva Pro, Figma",
+
+      },
+      {
+        id: "5",
+        title: "Flower Candle Single Product Spotlight",
+        category: "Posters",
+        date: "May 2026",
+        image: "Promotion Candl Instagram Post.webp",
+        description: "A neutral, minimalist product post highlighting a sculpted purple flower candle with scent notes (musk, lavender, amber) and a direct shopping call to action.",
+        tools: "Canva Pro",
+
+      },
+      {
+        id: "6",
+        title: "Flower Candle Collection Mockup",
+        category: "Posters",
+        date: "May 2026",
+        image: "Promotion Candle Instagram Post.webp",
+        description: "A three-panel smartphone mockup displaying different pastel floral candle designs and packaging to introduce a new collection launch.",
+        tools: "Canva Pro",
+
+      },
+      {
+        id: "7",
+        title: "Skincare Serum Benefits Breakdown",
+        category: "Posters",
+        date: "May 2026",
+        image: "Promotion Serum Instagram Post.png",
+        description: "A clean beauty infographic centering on a serum dropper, using radial feature callouts to highlight skincare benefits like hydration, blemish control, and glow.",
+        tools: "Canva Pro",
+
+      }
+    ];
+
+    /* =========================================================================
+       2. RENDERING & FILTERING ENGINE
+       ========================================================================= */
+    const designGrid = document.getElementById("designGrid");
+    const searchInput = document.getElementById("searchInput");
+    const categoryTabs = document.querySelectorAll(".tab-btn[data-category]");
+    
+    let activeCategory = "All";
+    let searchQuery = "";
+
+    function renderGallery() {
+      designGrid.innerHTML = "";
+
+      const filtered = designsData.filter(item => {
+        const matchesCategory = activeCategory === "All" || item.category === activeCategory;
+        const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              item.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                              item.tools.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        designGrid.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 60px; color: var(--text-muted);">No designs match your criteria.</div>`;
+        return;
+      }
+
+      filtered.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "gallery-item";
+        card.innerHTML = `
+          <div class="item-media">
+            <img src="${item.image}" alt="${item.title}" loading="lazy" />
+            <div class="item-overlay">
+              <span style="font-size: 0.8rem; color: #fff; display: flex; align-items: center; gap: 4px;">
+                <i class="ph ph-arrows-out-simple"></i> View Project
+              </span>
+            </div>
+          </div>
+          <div class="item-info">
+            <div class="item-meta">
+              <span class="item-category">${item.category}</span>
+              <span class="item-date">${item.date}</span>
+            </div>
+            <h3 class="item-title">${item.title}</h3>
+          </div>
+        `;
+        card.addEventListener("click", () => openModal(item));
+        designGrid.appendChild(card);
+      });
+    }
+
+    // Category Tabs Handler
+    categoryTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        categoryTabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        activeCategory = tab.getAttribute("data-category");
+        renderGallery();
+      });
+    });
+
+    // Search Handler
+    searchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value;
+      renderGallery();
+    });
+
+    /* =========================================================================
+       3. MODAL HANDLER
+       ========================================================================= */
+    const modal = document.getElementById("detailModal");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+
+    function openModal(item) {
+      document.getElementById("modalImg").src = item.image;
+      document.getElementById("modalTitle").innerText = item.title;
+      document.getElementById("modalCategory").innerText = item.category;
+      document.getElementById("modalDate").innerText = item.date;
+      document.getElementById("modalDesc").innerText = item.description;
+      document.getElementById("modalTools").innerText = item.tools;
+
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      modal.classList.remove("open");
+      document.body.style.overflow = "auto";
+    }
+
+    closeModalBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    /* =========================================================================
+       4. CLIENT-SIDE CODE GENERATOR (EASY EDIT TOOL)
+       ========================================================================= */
+    const adminPanel = document.getElementById("adminPanel");
+    const toggleAdminBtn = document.getElementById("toggleAdminBtn");
+    const closeAdmin = document.getElementById("closeAdmin");
+    const generateJsonBtn = document.getElementById("generateJsonBtn");
+
+    toggleAdminBtn.addEventListener("click", () => adminPanel.classList.toggle("open"));
+    closeAdmin.addEventListener("click", () => adminPanel.classList.remove("open"));
+
+    generateJsonBtn.addEventListener("click", () => {
+      const newItem = {
+        id: Date.now().toString(),
+        title: document.getElementById("newTitle").value || "Untitled Design",
+        category: document.getElementById("newCategory").value,
+        date: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
+        image: document.getElementById("newImage").value || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+        description: document.getElementById("newDesc").value || "Design preview description.",
+        tools: document.getElementById("newTools").value || "Canva Pro",
+        canvaLink: document.getElementById("newLink").value || "https://canva.com"
+      };
+
+      const codeString = JSON.stringify(newItem, null, 2) + ",";
+      navigator.clipboard.writeText(codeString).then(() => {
+        alert("Object code copied to clipboard! Simply paste it inside the 'designsData' array in your index.html on GitHub.");
+      });
+    });
+
+    // Initial Render
+    renderGallery();
+  </script>
+</body>
+</html>
