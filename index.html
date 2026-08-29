@@ -832,36 +832,6 @@
     modal.addEventListener("click", (e) => {
       if (e.target === modal) closeModal();
     });
-
-    /* =========================================================================
-       4. CLIENT-SIDE CODE GENERATOR (EASY EDIT TOOL)
-       ========================================================================= */
-    const adminPanel = document.getElementById("adminPanel");
-    const toggleAdminBtn = document.getElementById("toggleAdminBtn");
-    const closeAdmin = document.getElementById("closeAdmin");
-    const generateJsonBtn = document.getElementById("generateJsonBtn");
-
-    toggleAdminBtn.addEventListener("click", () => adminPanel.classList.toggle("open"));
-    closeAdmin.addEventListener("click", () => adminPanel.classList.remove("open"));
-
-    generateJsonBtn.addEventListener("click", () => {
-      const newItem = {
-        id: Date.now().toString(),
-        title: document.getElementById("newTitle").value || "Untitled Design",
-        category: document.getElementById("newCategory").value,
-        date: new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' }),
-        image: document.getElementById("newImage").value || "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
-        description: document.getElementById("newDesc").value || "Design preview description.",
-        tools: document.getElementById("newTools").value || "Canva Pro",
-        canvaLink: document.getElementById("newLink").value || "https://canva.com"
-      };
-
-      const codeString = JSON.stringify(newItem, null, 2) + ",";
-      navigator.clipboard.writeText(codeString).then(() => {
-        alert("Object code copied to clipboard! Simply paste it inside the 'designsData' array in your index.html on GitHub.");
-      });
-    });
-
     // Initial Render
     renderGallery();
   </script>
